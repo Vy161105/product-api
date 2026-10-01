@@ -33,3 +33,33 @@ jobs:
         run: |
           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/product-api:latest
           docker image inspect ${{ secrets.DOCKERHUB_USERNAME }}/product-api:latest
+
+  deploy:
+    needs: cd
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: |
+          docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
+
+      - name: Pull latest Docker image
+        run: |
+          docker compose -f docker-compose-prod.yaml pull
+
+      - name: Deploy Product API
+        run: |
+          docker compose -f docker-compose-prod.yaml up -d
+
+      - name: Check containers
+        run: |
+          docker compose -f docker-compose-prod.yaml ps
+
+      - name: Check Product API health
+        shell: bash
+        run: |
+          sleep 10
+          curl --fail http://localhost:3003/
