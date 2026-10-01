@@ -1,0 +1,30 @@
+{
+  "name": "product-api",
+  "version": "1.0.0",
+  "description": "RESTful API CRUD Product with MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vy161105/product-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Vy161105/product-api/issues"
+  },
+  "homepage": "https://github.com/Vy161105/product-api#readme",
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
