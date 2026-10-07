@@ -36,7 +36,7 @@ jobs:
 
   deploy:
     needs: cd
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source code
