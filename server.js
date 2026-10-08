@@ -26,6 +26,17 @@ app.get("/", (req, res) => {
 
 
 // ==========================================
+// Route kiểm tra System Health
+// ==========================================
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "System is healthy"
+  });
+});
+
+
+// ==========================================
 // Product routes
 // ==========================================
 app.use("/api/products", productRoutes);
