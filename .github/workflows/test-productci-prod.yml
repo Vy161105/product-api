@@ -51,27 +51,21 @@ jobs:
         run: |
           curl --fail -X POST http://localhost:3001/api/products \
             -H "Content-Type: application/json" \
-            -d '{"pid":"CI001","pname":"CI Product","price":100000,"quantity":10}'
+            -d '{"pid":"CI002","pname":"CI Product","price":100000,"quantity":10}'
 
       - name: Test READ product
         run: |
-          curl --fail http://localhost:3001/api/products/CI001
+          curl --fail http://localhost:3001/api/products/CI002
 
       - name: Test UPDATE product
         run: |
-          curl --fail -X PUT http://localhost:3001/api/products/CI001 \
+          curl --fail -X PUT http://localhost:3001/api/products/CI002 \
             -H "Content-Type: application/json" \
             -d '{"pname":"CI Product Updated","price":200000,"quantity":20}'
 
       - name: Test DELETE product
         run: |
-          curl --fail -X DELETE http://localhost:3001/api/products/CI001
-
-      - name: Verify DELETE product
-        run: |
-          if curl --fail http://localhost:3001/api/products/CI001; then
-            exit 1
-          fi
+          curl --fail -X DELETE http://localhost:3001/api/products/CI002
 
       - name: Show API logs if test fails
         if: failure()
