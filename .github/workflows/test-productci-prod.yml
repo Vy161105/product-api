@@ -69,9 +69,9 @@ jobs:
 
       - name: Verify DELETE product
         run: |
-          if curl --fail https://localhost:3001/api/products/TH005; then
+          if curl --fail http://localhost:3001/api/products/CI001; then
             exit 1
-          fi 
+          fi
 
       - name: Show API logs if test fails
         if: failure()
