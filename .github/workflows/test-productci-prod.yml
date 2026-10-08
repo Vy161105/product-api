@@ -67,6 +67,12 @@ jobs:
         run: |
           curl --fail -X DELETE http://localhost:3001/api/products/CI001
 
+      - name: Verify DELETE product
+        run: |
+          if curl --fail https://localhost:3001/api/products/TH005; then
+            exit 1
+          fi 
+
       - name: Show API logs if test fails
         if: failure()
         run: |
